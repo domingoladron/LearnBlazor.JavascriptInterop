@@ -1,3 +1,4 @@
+using BlazorWasm.Toastr.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace BlazorWasmJSInteropExamples
 			var builder = WebAssemblyHostBuilder.CreateDefault(args);
 			builder.RootComponents.Add<App>("#app");
 
+			builder.Services.AddBlazorToastr();
 			await builder.Build().RunAsync();
 		}
 	}
