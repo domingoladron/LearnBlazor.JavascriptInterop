@@ -16,7 +16,7 @@ namespace BlazorWasmJSInteropExamples.Pages
 		private EmailDetails _emailDetails = new EmailDetails();
 		private string _errorMessage;
 
-		protected override async Task OnAfterRenderAsync(bool firstRender)
+        protected override async Task OnAfterRenderAsync(bool firstRender)
 		{
 			if (firstRender)
 			{
