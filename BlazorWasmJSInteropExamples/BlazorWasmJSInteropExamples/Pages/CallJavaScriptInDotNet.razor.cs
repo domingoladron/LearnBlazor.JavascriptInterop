@@ -7,23 +7,20 @@ namespace BlazorWasmJSInteropExamples.Pages
 	public partial class CallJavaScriptInDotNet
 	{
 		[Inject]
-		public IJSRuntime JSRuntime { get; set; }
+		public IJSRuntime JsRuntime { get; set; }
 
 		private IJSObjectReference _jsModule;
 		private string _registrationResult;
 		private string _detailsMessage;
-		private ElementReference _elRef;
-		private EmailDetails _emailDetails = new EmailDetails();
+        private EmailDetails _emailDetails = new EmailDetails();
 		private string _errorMessage;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
 		{
 			if (firstRender)
 			{
-				_jsModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./scripts/jsExamples.js");
-				await FocusAndStyleElement();
-				await ThrowError();
-			}
+				_jsModule = await JsRuntime.InvokeAsync<IJSObjectReference>("import", "./scripts/jsExamples.js");
+            }
 		}
 
 		private async Task ShowAlertWindow() => 
@@ -42,11 +39,6 @@ namespace BlazorWasmJSInteropExamples.Pages
 				_detailsMessage = "Email is not provided.";
 		}
 
-		private async Task FocusAndStyleElement()
-			=> await _jsModule.InvokeVoidAsync("focusAndStyleElement", _elRef);
-
-		private async Task FocusAndStyleInputComonent()
-			=> await _jsModule.InvokeVoidAsync("focusAndStyleInputComponent", "dummyInputComponent");
 
 		private async Task ThrowError()
 		{
