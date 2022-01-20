@@ -24,7 +24,7 @@ namespace BlazorWasmJSInteropExamples.Pages
 		}
 
 		private async Task ShowAlertWindow() => 
-			await _jsModule.InvokeVoidAsync("showAlert", new { Name = "John", Age = 35 });
+			await _jsModule.InvokeVoidAsync("showAlert", new { Name = "Chris", Age = 44 });
 
 		private async Task RegisterEmail() =>
 			_registrationResult = await _jsModule.InvokeAsync<string>("emailRegistration", "Please provide your email");

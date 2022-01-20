@@ -1,7 +1,7 @@
 ﻿var jsFunctions = {};
 
 jsFunctions.calculateSquareRoot = function () {
-	const number = prompt("Enter your number");
+	const number = prompt("Enter your number, and I'll give you its square root");
 
 	DotNet.invokeMethodAsync("BlazorWasmJSInteropExamples", "CalculateSquareRoot", parseInt(number))
 		.then(result => {
